@@ -109,27 +109,6 @@ def parse_layer_definition(filename, layer):
             debug_out('Line handled')
             continue
 
-        # Doesn't make sense to configure screens in a layer - should get its own parser?
-        """
-        elif 'Top Screen' in line and line.index('Top Screen') == 0:  # TODO: Remove need to capitalize? Performance benefits?
-            state = 'assigning screen'
-            screen_being_configured = 0
-            debug_out('Now configuring top screen')
-            line = line[len('Top Screen'):].lstrip()
-
-        elif 'Middle Screen' in line and line.index('Middle Screen') == 0:
-            state = 'assigning screen'
-            screen_being_configured = 1
-            debug_out('Now configuring middle screen')
-            line = line[len('Middle Screen'):].lstrip()
-
-        elif 'Bottom Screen' in line and line.index('Bottom Screen') == 0:  # TODO: Remove need to capitalize? Performance benefits?
-            state = 'assigning screen'
-            screen_being_configured = 'top'
-            debug_out('Now configuring top screen')
-            line = line[len('Top Screen'):].lstrip()
-        """
-
         # TODO throw error if a layer has passthrough disabled and no way to dismiss itself
 
         # TODO detect screen and preamble bits here
