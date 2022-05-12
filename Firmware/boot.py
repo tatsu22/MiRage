@@ -37,7 +37,6 @@ bitmap_keyboard_descriptor = bytes((
         0x81, 0x02,                     #   Input (Data, Variable, Absolute),
         0xc0                            # End Collection
 ))
-
 bitmap_keyboard = usb_hid.Device(
     report_descriptor = bitmap_keyboard_descriptor,
     usage_page = 0x1,

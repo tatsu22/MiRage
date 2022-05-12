@@ -20,8 +20,8 @@ class MCP2301x:
     def reset(self, invert=False):
         # set pullups on all registers
         for i in range(16):
-            pin = self.device.getPin(i)
-            pin.direction = digitalio.INPUT
+            pin = self.device.get_pin(i)
+            pin.direction = digitalio.Direction.INPUT
             pin.pull = digitalio.Pull.UP
 
         self.update()

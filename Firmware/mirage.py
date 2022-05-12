@@ -65,13 +65,12 @@ physical_key_assignments = {
 }
 
 class IOAssociation:
-    __slots__ = 'input_line', 'row', 'col', 'is_a_key'
+    __slots__ = 'input_line', 'row', 'col'
 
-    def __init__(self, input_line, row, col, is_a_key):
+    def __init__(self, input_line, row, col):
         self.input_line = input_line
         self.row = row
         self.col = col
-        self.is_a_key = is_a_key
 
 
 class KeyGrid:
@@ -105,13 +104,13 @@ class KeyGrid:
                 if coords in self.keys:
                     row, col = self.keys[coords]
                     is_a_key = True
-                elif coords in self.buttons:
-                    row, col = self.buttons[coords]
-                    is_a_key = False
+#                elif coords in self.buttons:
+#                    row, col = self.buttons[coords]
+#                    is_a_key = False
                 else:
                     continue
 
-                self.key_associations.append(IOAssociation(input_line, row, col, is_a_key))
+                self.key_associations.append(IOAssociation(input_line, row, col))
 
     # @timed_function
     def update(self):
@@ -122,9 +121,9 @@ class KeyGrid:
             if line.input_line.fell:  # Key pressed down
                 print('Row {}, col {} pressed'.format(line.row, line.col))
                 self.keymap.fire_operation(line.row, line.col, 'press')
-                if self.clicky_displays is not None:
-                    for display in self.clicky_displays:
-                        display.on_keystroke(0x00)  # TODO: Only do something if a key was pressed, and pass in which key
+#                if self.clicky_displays is not None:
+#                    for display in self.clicky_displays:
+#                        display.on_keystroke(0x00)  # TODO: Only do something if a key was pressed, and pass in which key
 
                 self.key_down_timestamps[line] = time.monotonic()
 
@@ -139,12 +138,12 @@ class KeyGrid:
                 del self.key_down_timestamps[line]
 
                 print('Row {}, col {} went high after {}ms'.format(line.row, line.col, hold_length))
-                
+
                 if hold_length <= self.click_timeout:
                     is_double_click = False
 
                     print("That's a click")
-                    
+
                     if line in self.recent_key_clicks:
                         if time.monotonic() - self.recent_key_clicks[line]\
                             <= self.double_click_timeout:
@@ -169,7 +168,7 @@ class KeyGrid:
 
                 # print('Row {}, col {} released'.format(line.row, line.col))
                 self.keymap.fire_operation(line.row, line.col, 'release')
-                
+
             elif not line.input_line.value:
                 if line in self.key_down_timestamps\
                     and time.monotonic() - self.key_down_timestamps[line] > self.click_timeout:
