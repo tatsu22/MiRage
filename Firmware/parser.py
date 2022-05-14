@@ -3,7 +3,7 @@ from keynames import key_names
 
 key_binding_operation_tokens = ['on press', 'on click', 'on hold', 'on double-click', 'on release']
 key_binding_action_tokens = ['press', 'release', 'click', 'wait', 'switch to',
-                             'toggle', 'leave', 'type', 'reset keyboard', 
+                             'toggle', 'leave', 'type', 'reset keyboard',
                              'bootloader', 'home', 'nothing', 'pass through', 'reload key maps']
 
 debug_line_callback = None
@@ -101,7 +101,7 @@ def parse_layer_definition(filename, layer):
             layer.unassigned_keys_fall_through = True
             debug_out('Unassigned keys pass through to lower layer')
             debug_out('Line handled')  # TODO: This is crude - add a fallback keybinding instead
-            continue        
+            continue
 
         elif 'Block other keys' in line and line.index('Block other keys') == 0:
             layer.unassigned_keys_fall_through = False
@@ -131,7 +131,7 @@ def parse_layer_definition(filename, layer):
         debug_out('Line handled')
 
     return layer
-        
+
 
 def parse_binding(line):
     # Assumes whitespace, coordinates already stripped out
@@ -248,7 +248,7 @@ def parse_action_token(token):
                             debug_out("Found explicit speed token '{}'".format(token))
                         except AttributeError:
                             if len(string_to_type):
-                                raise AttributeError('Parsing error! Either existing string "{}" or new token "{}" is malformed.'.format(string_to_type, token))   
+                                raise AttributeError('Parsing error! Either existing string "{}" or new token "{}" is malformed.'.format(string_to_type, token))
                             string_to_type = token.replace('[COMMA]', ',').replace('[DOUBLE QUOTES]', '"')
 
                 debug_out('String to type: "{}", delay: {}, {}'.format(

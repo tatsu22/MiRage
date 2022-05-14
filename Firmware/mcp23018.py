@@ -29,4 +29,4 @@ class MCP2301x:
     # @timed_function
     def update(self):
         for i in range(16):
-            self.input_lines[i].set_value(not self.device.get_pin(i).value)
+            self.input_lines[i].set_value(self.device.get_pin(i).value)
