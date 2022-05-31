@@ -53,7 +53,7 @@ class KeyBinding:
 
         for action in actions:
             if isinstance(action, PassThroughAction):
-                fall_through_override = True 
+                fall_through_override = True
                 # print('Firing PassThroughAction')
                 continue
             #should_fall_through = False
@@ -202,10 +202,10 @@ class Keymap:
         os.chdir(folder)
         layer_files = os.listdir()
 
-        if 'base layer' not in map(lambda x: 
-            x.lower()[:x.rindex('.')] if '.' in x else x.lower(), 
+        if 'base layer' not in map(lambda x:
+            x.lower()[:x.rindex('.')] if '.' in x else x.lower(),
             layer_files):
-            
+
             raise RuntimeError('Major problem - Base Layer not present')
         else:
             # print('Found layer files', ', '.join(layer_files))
@@ -213,7 +213,7 @@ class Keymap:
             layers_to_reuse = list(self.all_layers.values())
 
             self.reset()
-                
+
             for filename in layer_files:
                 with open(filename, 'r') as f:
                     if len(layers_to_reuse):
@@ -230,14 +230,14 @@ class Keymap:
                     self.add_layer(working_layer)
 
                 # print('Successfully loaded all layer definitions')
-        
+
         os.chdir('..')
 
     def add_layer(self, layer):
         if layer.name.lower() == 'base layer':
             self.base_layer = layer
             # print('This is the super special base layer')
-        
+
         self.all_layers[layer.name] = layer
         # print('Adding {}', layer.name)
 
@@ -251,7 +251,7 @@ class Keymap:
                     # Firing operation returns true if it should fall through
                     return
                 # print("{} didn't handle it, falling through".format(layer.name))
-        
+
         for position in ['top', 'middle', 'bottom']:
             if self.widget_layers[position] is not None:
                 # print('Trying {} widget layer {}'.format(position, self.widget_layers[position].name))
@@ -295,7 +295,7 @@ class Keymap:
                     # print('Layer stack is empty - now on base layer')
             # else:
                 # print("Couldn't dismiss layer {} - not in stack".format(layer.name))
-        
+
         if self.reload_queued:
             # print('Reloading keymap')
             self.load()
@@ -305,7 +305,7 @@ class Keymap:
             del self.layer_stack[:]
 
         del self.switch_queue[:]
-        del self.dismissal_queue[:] 
+        del self.dismissal_queue[:]
         self.layer_stack_reset_queued = False
         self.reload_queued = False
 

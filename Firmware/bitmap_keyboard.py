@@ -3,6 +3,7 @@ from adafruit_hid.keyboard import Keyboard, Keycode
 class BitmapKeyboard(Keyboard):
     def __init__(self, devices):
         for device in devices:
+            print(device.usage)
             if device.usage == 6 and device.usage_page == 1:
                 try:
                     device.send_report(b'\0' * 16)
