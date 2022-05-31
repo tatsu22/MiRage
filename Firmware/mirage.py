@@ -5,18 +5,7 @@ from util import timed_function
 
 # TODO: remap these to follow my schem
 physical_key_assignments = {
-    (0, 1, 7): (0, 0),
-    (0, 1, 6): (0, 1),
-    (0, 1, 5): (0, 2),
-    (0, 1, 4): (0, 3),
-    (0, 1, 3): (0, 4),
-    (0, 1, 2): (0, 5),
-    (0, 1, 1): (0, 6),
-    (0, 1, 0): (0, 7),
-    (0, 0, 4): (0, 8),
-    (0, 0, 5): (0, 9),
-    (0, 0, 6): (1, 0),
-    (0, 0, 7): (1, 1)
+
 
 # EXAMPLE
 #    (0, 0, 5): (0, 1),  #  (which PCA9505, which bank, which line): (row, col)
@@ -104,9 +93,9 @@ class KeyGrid:
         self.double_click_timeout = 0.2  # Click again within this many seconds to fire a double click
 
     def setup(self):
-        # self.io_expanders.append(PCA950x(self.i2c, 0x23)) # TODO: Uncomment when we make the second half
-        # self.io_expanders.append(PCA950x(self.i2c, 0x20)) # TODO: Uncomment when we make the first half
-        self.io_expanders.append(MCP2301x(self.i2c, 0x20))
+        #self.io_expanders.append(PCA950x(self.i2c, 0x23)) # TODO: Uncomment when we make the second half
+        self.io_expanders.append(PCA950x(self.i2c, 0x20))
+        #self.io_expanders.append(MCP2301x(self.i2c, 0x20))
 
         for io_expander in self.io_expanders:
             io_expander.reset()
@@ -118,9 +107,6 @@ class KeyGrid:
                 if coords in self.keys:
                     row, col = self.keys[coords]
                     is_a_key = True
-#                elif coords in self.buttons:
-#                    row, col = self.buttons[coords]
-#                    is_a_key = False
                 else:
                     continue
 
@@ -135,9 +121,6 @@ class KeyGrid:
             if line.input_line.fell:  # Key pressed down
                 print('Row {}, col {} pressed'.format(line.row, line.col))
                 self.keymap.fire_operation(line.row, line.col, 'press')
-#                if self.clicky_displays is not None:
-#                    for display in self.clicky_displays:
-#                        display.on_keystroke(0x00)  # TODO: Only do something if a key was pressed, and pass in which key
 
                 self.key_down_timestamps[line] = time.monotonic()
 
@@ -165,8 +148,6 @@ class KeyGrid:
                             is_double_click = True
                     else:
                         self.recent_key_clicks[line] = time.monotonic()
-
-                    # TODO: When both a click and double click are assigned, clicking once should delay til DC threshold passed
 
                     if is_double_click:
                         # print("Row {}, col {} double-clicked".format(line.row, line.col))
