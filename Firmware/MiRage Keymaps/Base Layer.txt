@@ -1,17 +1,83 @@
-R0, K0: Q
 #R0, K0:
 #	On click: Click WINDOWS + A
 #	On double-click: Type "Hello # world" slowly  # Try to confuse # "The # parser" lol 
 #	On hold: Switch to Layer 2 until released
 
-R0, K1: W
-R0, K2: E
-R0, K3: R
-R0, K4: T
-R0, K5: Y
-R0, K6: U
-R0, K7: I
-R0, K8: O
-R0, K9: P
-R1, K0: BACKSPACE
-R1, K1: SHIFT
+#R0, K0: 
+R0, K1: TILDE
+R0, K2: 1
+R0, K3: 2
+R0, K4: 3
+R0, K5: 4
+R0, K6: 5
+R0, K7: 6
+R0, K8: 7
+R0, K9: 8
+R0, K10: 9
+R0, K11: 0
+R0, K12: MINUS
+R0, K13: BACKSPACE
+#R1, K0: 
+R1, K1: TAB
+R1, K2: Q
+R1, K3: W
+R1, K4: E
+R1, K5: R
+R1, K6: T
+R1, K7: Y
+R1, K8: U
+R1, K9: I
+R1, K10: O
+R1, K11: P
+R1, K12: LEFTBRACE
+R1, K13: RIGHTBRACE
+#R2, K0: 
+R2, K1: LEFTCTRL
+R2, K2: A
+R2, K3: S
+R2, K4: D
+R2, K5: F
+R2, K6: G
+R2, K7: H
+R2, K8: J
+R2, K9: K
+R2, K10: L
+R2, K11: SEMICOLON
+R2, K12: QUOTE
+R2, K13: ENTER
+#R3, K0: 
+R3, K1: LEFTSHIFT
+R3, K2: Z
+R3, K3: X
+R3, K4: C
+R3, K5: V
+R3, K6: B
+R3, K7: N
+R3, K8: M
+R3, K9: COMMA
+R3, K10: PERIOD
+R3, K11: SLASH
+R3, K12: SHIFT
+R3, K13: PLUS
+#R4, K0: 
+R4, K1: LEFTCTRL
+#R4, K2: 
+R4, K3: LEFTWINDOWS
+#R4, K4: 
+R4, K5: ALT
+R4, K6: RIGHTALT
+#R4, K7: 
+R4, K8: RIGHTWINDOWS
+R4, K9: RIGHTCONTROL
+#R4, K10: 
+R4, K11: BACKSLASH
+#R5, K0: 
+R5, K1: SPACE
+#R5, K2: 
+R5, K3: BACKSPACE
+#R5, K4: 
+R5, K5: 
+	On click: Toggle Function Layer
+	On hold: Switch to Function Layer until released
+R5, K6: SPACE
+R5, K7: BACKSPACE

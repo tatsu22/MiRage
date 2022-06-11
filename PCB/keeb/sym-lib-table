@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "keeb-eagle-import")(type "KiCad")(uri "${KIPRJMOD}/keeb-eagle-import.kicad_sym")(options "")(descr ""))
+)
