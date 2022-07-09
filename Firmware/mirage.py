@@ -81,10 +81,6 @@ physical_key_assignments = {
     (0, 4, 7): (5, 5),
     (0, 4, 4): (5, 6),
     (0, 4, 5): (5, 7)
-
-# EXAMPLE
-#  (which PCA9505, which bank, which line): (row, col)
-#    (0, 0, 6): (0, 2),
 }
 
 class IOAssociation:
@@ -142,7 +138,7 @@ class KeyGrid:
 
         for line in self.key_associations:
             if line.input_line.fell:  # Key pressed down
-                print('Row {}, col {} pressed'.format(line.row, line.col))
+                #print('Row {}, col {} pressed'.format(line.row, line.col))
                 self.keymap.fire_operation(line.row, line.col, 'press')
 #                if self.clicky_displays is not None:
 #                    for display in self.clicky_displays:
@@ -153,14 +149,14 @@ class KeyGrid:
             elif line.input_line.rose:
                 if line in self.key_down_timestamps:
                     hold_length = time.monotonic() - self.key_down_timestamps[line]
-                    print('Held for', hold_length)
+                    #print('Held for', hold_length)
                 else:
                     hold_length = 666
                     print('WEIRD SHIT - Key rose without previously falling')
 
                 del self.key_down_timestamps[line]
 
-                print('Row {}, col {} went high after {}ms'.format(line.row, line.col, hold_length))
+                #print('Row {}, col {} went high after {}ms'.format(line.row, line.col, hold_length))
 
                 if hold_length <= self.click_timeout:
                     is_double_click = False
@@ -178,18 +174,18 @@ class KeyGrid:
                     # TODO: When both a click and double click are assigned, clicking once should delay til DC threshold passed
 
                     if is_double_click:
-                        # print("Row {}, col {} double-clicked".format(line.row, line.col))
+                        print("Row {}, col {} double-clicked".format(line.row, line.col))
                         self.keymap.fire_operation(line.row, line.col, 'double-click')
                     else:
-                        # print('Row {}, col {} clicked'.format(line.row, line.col))
+                        print('Row {}, col {} clicked'.format(line.row, line.col))
                         self.keymap.fire_operation(line.row, line.col, 'click')
 
                 if line in self.keys_held:
-                    # print('Row {}, col {} no longer held'.format(line.row, line.col))
+                    print('Row {}, col {} no longer held'.format(line.row, line.col))
                     self.keymap.fire_operation(line.row, line.col, 'end hold')
                     self.keys_held.remove(line)
 
-                # print('Row {}, col {} released'.format(line.row, line.col))
+                print('Row {}, col {} released'.format(line.row, line.col))
                 self.keymap.fire_operation(line.row, line.col, 'release')
 
             elif not line.input_line.value:
@@ -198,7 +194,7 @@ class KeyGrid:
                     if line in self.keys_held:
                         self.keymap.fire_operation(line.row, line.col, 'continue hold')
                     else:
-                        # print('Row {}, col {} now held'.format(line.row, line.col))
+                        print('Row {}, col {} now held'.format(line.row, line.col))
                         self.keys_held.append(line)
                         self.keymap.fire_operation(line.row, line.col, 'start hold')
 

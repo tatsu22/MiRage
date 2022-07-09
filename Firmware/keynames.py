@@ -209,7 +209,7 @@ key_names = {
 	'MEDIAPREVIOUSSONG': 0xea,
 	'MEDIANEXTSONG': 0xeb,
 	'MEDIAEJECTCD': 0xec,
-	'VOLUMEUP': 0xed,
+	'MEDIAVOLUMEUP': 0xed,
 	'MEDIAVOLUMEDOWN': 0xee,
 	'MEDIAMUTE': 0xef,
 	'MUTE': 0xef,

@@ -3,7 +3,7 @@
 #	On double-click: Type "Hello # world" slowly  # Try to confuse # "The # parser" lol 
 #	On hold: Switch to Layer 2 until released
 
-#R0, K0: 
+R0, K0: ESC
 R0, K1: TILDE
 R0, K2: 1
 R0, K3: 2
@@ -17,7 +17,7 @@ R0, K10: 9
 R0, K11: 0
 R0, K12: MINUS
 R0, K13: BACKSPACE
-#R1, K0: 
+R1, K0: VOLUMEUP
 R1, K1: TAB
 R1, K2: Q
 R1, K3: W
@@ -31,7 +31,7 @@ R1, K10: O
 R1, K11: P
 R1, K12: LEFTBRACE
 R1, K13: RIGHTBRACE
-#R2, K0: 
+R2, K0: VOLUMEDOWN
 R2, K1: LEFTCTRL
 R2, K2: A
 R2, K3: S
@@ -61,8 +61,8 @@ R3, K12: SHIFT
 R3, K13: PLUS
 #R4, K0: 
 R4, K1: LEFTCTRL
-#R4, K2: 
-R4, K3: LEFTWINDOWS
+R4, K2: LEFTWINDOWS
+#R4, K3: LEFTWINDOWS
 #R4, K4: 
 R4, K5: ALT
 R4, K6: RIGHTALT
@@ -72,12 +72,12 @@ R4, K9: RIGHTCONTROL
 #R4, K10: 
 R4, K11: BACKSLASH
 #R5, K0: 
-R5, K1: SPACE
+R5, K1: 
+	On hold: Switch to Function Layer until released
 #R5, K2: 
 R5, K3: BACKSPACE
 #R5, K4: 
 R5, K5: 
-	On click: Toggle Function Layer
 	On hold: Switch to Function Layer until released
 R5, K6: SPACE
 R5, K7: BACKSPACE
